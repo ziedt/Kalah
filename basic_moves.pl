@@ -15,4 +15,4 @@ distribuer(0, _, Y, _,Y).
 distribuer(Seed, Pos, Joueur, Adversaire,Y) :- nth0(Pos, Joueur, X),X1 is X+1, doReplace(Joueur,Pos,X1,NJoueur),NewSeed is Seed-1, NewPos is Pos+1,distribuer(NewSeed, NewPos, NJoueur, Adversaire,Y).
 
 
-coup(Position, Joueur, Adversaire):- nth0(Position, Joueur, X).
+coup(Position, Joueur, Adversaire,Y):- nth0(Position, Joueur, X), PosDis is Position+1, distribuer(X, PosDis, Joueur, Adversaire, NJoueur), doReplace(NJoueur,Position, 0, Y).
