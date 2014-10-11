@@ -1,27 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 
+% ==============================================================================
+% Gets the next player
+% ==============================================================================
+get_opponent(1,2).
+get_opponent(2,1).
+
+% ==============================================================================
+% Creates a new field for a player
+% ==============================================================================
+new_player_field(L):- copy([4,4,4,4,4,0],L).
+
+% ==============================================================================
+% represents the basic move in the game
+% takes Seed at Pos index and distributes them over player's and opponent's fields  
+% starting from Pos+1.
+% ==============================================================================
+move(Pos,Player, Opponent_field,NPlayer,NOpponent):-
+	nth0(Pos,Player,Seed), 
+	PosDis is Pos+1, 
+	replace_wrapper(Player,Pos, 0,Temp_player),
+	distribute_wrapper(Seed,PosDis,Temp_player, Opponent_field, NPlayer, NOpponent).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PRIVATE
+
+% ==============================================================================
+% Replaces the value with index I with X.
+% L: original list
+% NL: modified list
+% ==============================================================================
 replace([_|T], 0, X, [X|T]).
 replace([H|T], I, X, [H|R]):- I > -1, NI is I-1, replace(T, NI, X, R), !.
 replace(L, _, _, L).
 
-/* 
-* Replaces the value with index I with X.
-* L: original list
-* NL: modified list
-*/
+% ==============================================================================
+% wrapper for replace 
+%% ==============================================================================
+
 replace_wrapper(L,I,X,NL) :- replace(L,I,X,NL),!.
 
-/*
-* Copies the list L into R.
-*/
+% ==============================================================================
+% Copies the list L into R.
+%% ==============================================================================
 copy(L,R) :- accCp(L,R).
 accCp([],[]).
 accCp([H|T1],[H|T2]) :- accCp(T1,T2).
 
-/* 
-* Distributes Seed starting from Pos in the list Field.We put a
-* seed in the index Pos.
-* NField is the modified list.
-*/
+% ============================================================================== 
+% Distributes Seed starting from Pos in the list Field.We put a
+% seed in the index Pos.
+% NField is the modified list.
+%% ==============================================================================
 distribute_in_field(0, _, NField,NField).
 distribute_in_field(Seed, Pos, Field,NField) :- 
 	nth0(Pos, Field, X),
@@ -31,11 +60,11 @@ distribute_in_field(Seed, Pos, Field,NField) :-
 	NewPos is Pos+1,
 	distribute_in_field(NewSeed, NewPos, Temp_field, NField).
 
-/*
-* Distributes Seed starting from Pos in both lists .We put a
-* seed in the index Pos.
-* NPlayer and NOpponent are the modified lists.
-*/
+% ==============================================================================
+% Distributes Seed starting from Pos in both lists .We put a
+% seed in the index Pos.
+% NPlayer and NOpponent are the modified lists.
+%% ==============================================================================
 distribute(0, _,NPlayer,NOpponent,NPlayer,NOpponent).
 
 distribute(Seed, Pos, Player_field, Opponent_field,NPlayer, NOpponent) :- 
@@ -59,18 +88,8 @@ distribute(Seed, Pos, Player_field, Opponent_field,NPlayer,  NOpponent) :-
 	distribute_in_field(OSeed, 0, Opponent_field,Temp_opponent), 
 	distribute(Rest, 0,Temp_player,Temp_opponent, NPlayer, NOpponent).
 
-/*
-* wrapper for distribute
-*/
+% ==============================================================================
+% wrapper for distribute
+%% ==============================================================================
 distribute_wrapper(Seed, Pos, Player_field, Opponent_field,NPlayer,NOpponent) :- distribute(Seed, Pos,  Player_field, Opponent_field,NPlayer,NOpponent), !.
 
-/*
-* represents the basic move in the game
-* takes Seed at Pos index and distributes them over player's and opponent's fields  
-* starting from Pos+1.
-*/
-move(Pos,Player, Opponent_field,NPlayer,NOpponent):-
-	nth0(Pos,Player,Seed), 
-	PosDis is Pos+1, 
-	replace_wrapper(Player,Pos, 0,Temp_player),
-	distribute_wrapper(Seed,PosDis,Temp_player, Opponent_field, NPlayer, NOpponent).
