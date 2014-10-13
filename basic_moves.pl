@@ -67,12 +67,12 @@ distribute_in_field(Seed, Pos, Field,NField) :-
 % NPlayer and NOpponent are the modified lists.
 %% ==============================================================================
 distribute(0, _,NPlayer,NOpponent,NPlayer,NOpponent).
-
+%end in your own field
 distribute(Seed, Pos, Player_field, Opponent_field,NPlayer, NOpponent) :- 
 	X is 7-Pos, 
 	Seed<X,distribute_in_field(Seed, Pos, Player_field,NPlayer), 
 	copy(Opponent_field,NOpponent).
-
+%end in the opponent's field once
 distribute(Seed, Pos, Player_field, Opponent_field,NPlayer, NOpponent) :- 
 	X is 12-Pos,
 	Seed<X, 
@@ -80,7 +80,7 @@ distribute(Seed, Pos, Player_field, Opponent_field,NPlayer, NOpponent) :-
 	OSeed is Seed-PSeed,
 	distribute_in_field(PSeed, Pos, Player_field,NPlayer),
 	distribute_in_field(OSeed, 0, Opponent_field,NOpponent).
-
+%end in the opponent's field and continues
 distribute(Seed, Pos, Player_field, Opponent_field,NPlayer,  NOpponent) :- 
 	PSeed is 6-Pos, 
 	OSeed is 11-Pos-PSeed, 

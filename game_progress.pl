@@ -26,21 +26,24 @@ game_progress(Player1, Player2, Final_player,Final_opponent,Result):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PRIVATE
 
 game_progress_private(PlayerId, Player, Opponent, Player_field,Opponent_field, Final_player,Final_opponent,Result) :- 
-	call(Player, PlayerId, Player_field, Opponent_field,NPlayer, NOpponent,Position),
+	call(Player, Player_field, Opponent_field,NPlayer, NOpponent,Position), Position1 is Position,
 	% we should check whether the game is over here
-	(game_over(PlayerId, NPlayer, NOpponent, Position,Result);
-		(print_progress(PlayerId,NPlayer,NOpponent,Position), temporize,get_opponent(PlayerId,OpponentId),
+		(print_progress(PlayerId,NPlayer,NOpponent,Position1), temporize,get_opponent(PlayerId,OpponentId),
 		game_progress_private(OpponentId, Opponent, Player, NOpponent, NPlayer, Final_opponent, Final_player,Result)
-		)).
+		).
 
+		
 % ==============================================================================
 % game_over is true when the opponent's field 
 % ==============================================================================
-game_over(PlayerId,Player, Opponent, Position,Result) :-  sub_list([0,0,0,0,0],Opponent),
-		Result = PlayerId, 
+game_over(PlayerId,Player, Opponent, Position,Result) :-  (sub_list([4,4,4,4,4],Opponent); sub_list([0,0,0,0,0],Player)),
+		sumlist(Player, PSeeds),
+		sumlist(Opponent, OSeeds),
+		(PSeeds>OSeeds -> Result=PlayerId ; get_opponent(PlayerId, Result)),
 		print_progress(PlayerId,Player,Opponent,Position),
-		write('THE END'),!.
+		write('THE END').
 	
+
 % ==============================================================================
 % checks wether the first list is a sublist of the second (respects order)
 % ==============================================================================
