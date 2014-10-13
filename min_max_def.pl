@@ -1,7 +1,8 @@
-min_max_def(J_avant,Adv_avant, J_apres, Adv_apres, NbCoup) :- , coup( Index_meilleur, J_avant, Adv_avant, J_apres, Adv_apres).
+:- use_module(library(lists)).
+:- consult(basic_moves).
+:- consult(most_seed_player).
 
-min_max_def_calcul(J_avant,Adv_avant, J_apres, Adv_apres, 0, [G|Liste_G], X) :- meilleur_coup(J_avant,Adv_avant, J_apres, Adv_apres)
-min_max_def_calcul(J_avant,Adv_avant, J_apres, Adv_apres, NbCoup, [G|Liste_G], X) :-
+min_max_def(Player, Opponent_field, NPlayer,NOpponent) :- min_max_def_calcul(Player, Opponent_field, 0, List_Moves), min_member(Min_Member, List_Moves), nth0(Index_Best_Move, List_Moves, Min_Member), move( Index_Best_Move, Player, Opponent_field, NPlayer,NOpponent).
 
-explorer_coup(_,_,_,5).
-explorer_coup( J_avant,Adv_avant, [G|Liste_G], X) :- coup( X, J_avant, Adv_avant, J_apres, Adv_apres), nth0(5, J_apres, G), X1 is X+1, gain_par_coup( J_avant,Adv_avant, Liste_G, X1). /* Appel récursif à vérifier */
+min_max_def_calcul(_,_,5,_).
+min_max_def_calcul(Player, Opponent_field, Index, [G|List_G]) :- move( Index,Player, Opponent_field,NPlayer,NOpponent), meilleur_coup(NOpponent, NPlayer, NNOpponent, NNPlayer),  nth0(5, NNOpponent, G), NewIndex is Index+1, min_max_def_calcul(Player, Opponent_field, NewIndex, List_G).

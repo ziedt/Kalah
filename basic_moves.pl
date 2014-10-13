@@ -18,6 +18,7 @@ new_player_field(L):- copy([4,4,4,4,4,0],L).
 % ==============================================================================
 move(Pos,Player, Opponent_field,NPlayer,NOpponent):-
 	nth0(Pos,Player,Seed), 
+	Seed>0,
 	PosDis is Pos+1, 
 	replace_wrapper(Player,Pos, 0,Temp_player),
 	distribute_wrapper(Seed,PosDis,Temp_player, Opponent_field, NPlayer, NOpponent).

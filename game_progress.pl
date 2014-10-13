@@ -1,5 +1,6 @@
 :- [basic_moves].
 :- [random_player].
+:- [most_seed_player].
 :- [human_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
