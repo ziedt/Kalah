@@ -1,5 +1,5 @@
-:- consult(basic_moves).
-:- consult(random_player).
+:- [basic_moves].
+:- [random_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 
@@ -26,7 +26,7 @@ game_progress(Player1, Player2, Final_player,Final_opponent,Result):-
 game_progress_private(PlayerId, Player, Opponent, Player_field,Opponent_field, Final_player,Final_opponent,Result) :- 
 	call(Player, PlayerId, Player_field, Opponent_field,NPlayer, NOpponent,Position), 
 	% we shoulf check whether the game is over here
-	% sub_list([0,0,0,0],NOpponent)->
+	% sub_list([0,0,0,0,0],NOpponent)->
 	%	(Result = PlayerId,
 	%	print_progress(PlayerId,NPlayer,NOpponent,Position),
 	%	write(end),!);
@@ -56,10 +56,10 @@ print_progress(PlayerId,Player_field, Opponent_field,Position) :-
 	write(PlayerId),
 	write(')'),nl,
 	write('moves from position '), write(Position),nl,
-	print(6,Player_field), nl,
-	print(6,Opponent_field).
+	print_base(6,Player_field), nl,
+	print_base(6,Opponent_field).
 
-print(0, _) :- !.
-print(_, []).
-print(N, [H|T]) :- write(H), write(' ,'), N1 is N - 1, print(N1, T).
+print_base(0, _) :- !.
+print_base(_, []).
+print_base(N, [H|T]) :- write(H), write(' ,'), N1 is N - 1, print_base(N1, T).
 
