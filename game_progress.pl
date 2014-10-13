@@ -1,5 +1,6 @@
 :- [basic_moves].
 :- [random_player].
+:- [human_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 
@@ -26,11 +27,11 @@ game_progress(Player1, Player2, Final_player,Final_opponent,Result):-
 game_progress_private(PlayerId, Player, Opponent, Player_field,Opponent_field, Final_player,Final_opponent,Result) :- 
 	call(Player, PlayerId, Player_field, Opponent_field,NPlayer, NOpponent,Position), 
 	% we shoulf check whether the game is over here
-	% sub_list([0,0,0,0,0],NOpponent)->
-	%	(Result = PlayerId,
-	%	print_progress(PlayerId,NPlayer,NOpponent,Position),
-	%	write(end),!);
-		(print_progress(PlayerId,NPlayer,NOpponent,Position), test_input(L),get_opponent(PlayerId,OpponentId),
+	 %sub_list([0,0,0,0,0],NOpponent)->
+		%(Result = PlayerId,
+		%print_progress(PlayerId,NPlayer,NOpponent,Position),
+		%write(end),!);
+		(print_progress(PlayerId,NPlayer,NOpponent,Position), temporize(L),get_opponent(PlayerId,OpponentId),
 		game_progress_private(OpponentId, Opponent, Player, NOpponent, NPlayer, Final_opponent, Final_player,Result)
 		).
 
@@ -43,7 +44,7 @@ sub_list( [H|T1], [H|T2] ) :- sub_list( T1, T2).
 % ==============================================================================
 % asks the user for an input 
 % ==============================================================================
-test_input(L) :- repeat, 
+temporize(L) :- repeat, 
             write('Please enter 5'), 
             read(X), 
             (X=:=5).
