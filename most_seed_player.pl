@@ -2,7 +2,7 @@
 :-use_module(library(lists)).
 :-[basic_moves].
 
-most_seed_player(PlayerId, Player_field, Opponent_field,NPlayer, NOpponent,Best_Index):- gain_par_coup(Player_field, Opponent_field, List_Moves, 0), max_member(Max_Member, List_Moves), nth0(Best_Index, List_Moves, Max_Member), move( Best_Index, Player_field, Opponent_field,NPlayer, NOpponent).
+most_seed_player(Player_field, Opponent_field,NPlayer, NOpponent,Best_Index):- gain_par_coup(Player_field, Opponent_field, List_Moves, 0), max_member(Max_Member, List_Moves), nth0(Best_Index, List_Moves, Max_Member), move( Best_Index, Player_field, Opponent_field,NPlayer, NOpponent).
 
 
 gain_par_coup(_,_,_,5).
