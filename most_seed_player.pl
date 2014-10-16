@@ -6,5 +6,5 @@ most_seed_player(Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, Fin
 
 
 gain_par_coup(_,_,_,5).
-gain_par_coup( J_avant,Adv_avant, [G|Liste_G], X) :- move( X, J_avant, Adv_avant, J_apres, _), nth0(5, J_apres, G), X1 is X+1, gain_par_coup( J_avant,Adv_avant, Liste_G, X1). /* Appel récursif à vérifier */
+gain_par_coup( J_avant,Adv_avant, [G|Liste_G], X) :- move( X, J_avant, Adv_avant, J_apres, _,_), nth0(5, J_apres, G), X1 is X+1, gain_par_coup( J_avant,Adv_avant, Liste_G, X1). /* Appel récursif à vérifier */
 gain_par_coup( J_avant,Adv_avant, [G|Liste_G], X) :- nth0(5, J_avant, G), X1 is X+1, gain_par_coup( J_avant,Adv_avant, Liste_G, X1).

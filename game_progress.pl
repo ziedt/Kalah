@@ -3,6 +3,8 @@
 :- [most_seed_player].
 :- [human_player].
 :- [end_in_store].
+:- [min_max_def].
+:- [glouton].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 % ==============================================================================
@@ -39,7 +41,7 @@ next_move(Position,16,PlayerId, Player, Opponent, Player_field, Opponent_field, 
 	temporize,
 	game_progress_private(PlayerId, Player,  Opponent, Player_field, Opponent_field, Final_player, Final_opponent, Result).
 
-next_move(Position, FinalPos, PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
+next_move(Position, _, PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
 	print_progress(PlayerId,Player_field,Opponent_field,Position), 
 	temporize,
 	get_opponent(PlayerId,OpponentId),
