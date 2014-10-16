@@ -2,11 +2,11 @@
 % Greedy strategy : we play the first move found that allow us to increase our store. 
 % Possibilities are explored from the first element in the list to the last one.
 % ==============================================================================
-greedy_strategy( Player_before,Opponent_before, Player_after, Opponent_after, Pos,FinalPos) :- 
+greedy_strategy(_, Player_before,Opponent_before, Player_after, Opponent_after, Pos,FinalPos) :- 
 	Pos is 0, 
 	greedy_strategy_calcul(Pos, Player_before,Opponent_before, Player_after, Opponent_after, FinalPos).
 	
-greedy_strategy( Player_before,Opponent_before, Player_after, Opponent_after,Pos, FinalPos) :- 
+greedy_strategy(_, Player_before,Opponent_before, Player_after, Opponent_after,Pos, FinalPos) :- 
 	random_player(Player_before,Opponent_before, Player_after, Opponent_after, Pos, FinalPos).
 
 % ==============================================================================

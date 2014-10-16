@@ -2,7 +2,7 @@
 :-use_module(library(lists)).
 :-[basic_moves].
 
-most_seed_player(Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, FinalPos):- gain_by_move(Player_field, Opponent_field, List_Moves, 0), max_member(Max_Member, List_Moves), nth0(Best_Index, List_Moves, Max_Member), move( Best_Index, Player_field, Opponent_field,NPlayer, NOpponent, FinalPos).
+most_seed_player(_, Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, FinalPos):- gain_by_move(Player_field, Opponent_field, List_Moves, 0), max_member(Max_Member, List_Moves), nth0(Best_Index, List_Moves, Max_Member), move( Best_Index, Player_field, Opponent_field,NPlayer, NOpponent, FinalPos).
 
 
 gain_by_move(_,_,_,5).

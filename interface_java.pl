@@ -1,5 +1,3 @@
-:- [game_progress].
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NETWORK
 
 connect(Port) :- 
@@ -10,25 +8,15 @@ connect(Port) :-
    assert(connectedReadStream(INs)), 
    assert(connectedWriteStream(OUTs)).
 %Connect to the server
-:- connect(54321).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
-
-javaInterface :- 
-   connectedReadStream(IStream), read(IStream,(Player1,Player2)),
-   %Launch Game with indicated Players (loopJavaInterface
-   new_player_field(Player_field), new_player_field(Opponent_field),
-   game_progress_private(1,Player1, Player2, Player_field, Opponent_field,_,_),!.
-   
-%Launch the game
-:- javaInterface
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SPECIFIC PROCEDURE
 
 % ==============================================================================
 % Wait the User Validation
 % ==============================================================================
+
 temporize :-
 	connectedWriteStream(OStream),
 	write(OStream,'tempo'),
@@ -58,11 +46,11 @@ print_progress(PlayerId,Player_field, Opponent_field,Position) :-
 	write(OStream,'tab;'),
 	write(OStream,SelectedHole),
 	write(OStream,';'),
-	print_base(6,Player_field),
-	print_base(6,Opponent_field)
+	print_base(6,Player_field, OStream),
+	print_base(6,Opponent_field, OStream),
 	nl(OStream),
 	flush_output(OStream).
 	
-print_base(0, _, _) :- !.
 print_base(_, [], _).
-print_base(N, [H|T], Socket) :- write(Socket,H), write(';'), N1 is N - 1, print_base(N1, T).
+print_base(1, [H|_], Socket) :- write(Socket,H), !.
+print_base(N, [H|T], Socket) :- write(Socket,H), write(Socket,';'), N1 is N - 1, print_base(N1, T, Socket).

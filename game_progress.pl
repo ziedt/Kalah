@@ -4,16 +4,31 @@
 :- [human_player].
 :- [end_in_store].
 :- [min_max_def].
-:- [glouton].
+:- [greedy_strategy].
+:- [java_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
+
+prolog_interface(Player1, Player2,Result):- 
+    [interface_prolog],
+	new_player_field(Player_field), new_player_field(Opponent_field),  
+	game_progress_private(1,Player1, Player2, Player_field, Opponent_field,_,_,Result),!.
+	
+java_interface :- 
+   [interface_java],
+   connect(54321),
+   connectedReadStream(IStream), read(IStream,(Player1,Player2)),
+   %Launch Game with indicated Players (loopJavaInterface
+   new_player_field(Player_field), new_player_field(Opponent_field),
+   game_progress_private(1,Player1, Player2, Player_field, Opponent_field,_,_, _),!.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PRIVATE
 game_progress_private(PlayerId, _, _, Player_field,Opponent_field, _,_,Result) :- 
 	game_over(PlayerId,Player_field, Opponent_field,Result), !.
 
 game_progress_private(PlayerId, Player, Opponent, Player_field,Opponent_field, Final_player,Final_opponent,Result) :- 
-	call(Player, Player_field, Opponent_field,NPlayer, NOpponent,Position, FinalPos), 	
+	call(Player, PlayerId, Player_field, Opponent_field,NPlayer, NOpponent,Position, FinalPos), 	
 	next_move(Position, FinalPos, PlayerId, Player, Opponent, NPlayer, NOpponent, Final_player,Final_opponent,Result).
 
 % ==============================================================================

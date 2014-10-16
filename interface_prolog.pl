@@ -1,5 +1,3 @@
-:- [game_progress].
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 
 % ==============================================================================
@@ -15,8 +13,7 @@
 % ==============================================================================
 
 game_progress(Player1, Player2,Result):- 
-	new_player_field(Player_field), new_player_field(Opponent_field),  
-	game_progress_private(1,Player1, Player2, Player_field, Opponent_field,_,_,Result),!.
+	prolog_interface(Player1, Player2,Result).
 
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SPECIFIC PROCEDURE

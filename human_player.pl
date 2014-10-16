@@ -6,4 +6,4 @@ test_input(X) :- repeat,
             read(X), 
             (0=<X , X=<4).
 			
-human_player(Player_field, Opponent_field,NPlayer, NOpponent,X, FinalPos) :- test_input(X), move(X,Player_field, Opponent_field, NPlayer, NOpponent, FinalPos). 
+human_player(_, Player_field, Opponent_field,NPlayer, NOpponent,X, FinalPos) :- test_input(X), move(X,Player_field, Opponent_field, NPlayer, NOpponent, FinalPos). 
