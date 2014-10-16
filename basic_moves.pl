@@ -16,7 +16,7 @@ new_player_field(L):- L=[4,4,4,4,4,0].
 % takes Seed at Pos index and distributes them over player's and opponent's fields  
 % starting from Pos+1.
 % ==============================================================================
-move(Pos,Player, Opponent_field,NPlayer,NOpponent):-
+move(Pos,Player, Opponent_field,NPlayer,NOpponent,Last_hole):-
 	nth0(Pos,Player,Seed), 
 	Seed>0,
 	PosDis is Pos+1, 

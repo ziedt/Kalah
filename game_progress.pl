@@ -6,17 +6,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 % ==============================================================================
-% game_progress(Player1, Player2, Final_player, Final_opponent)
+% game_progress(Player1, Player2, Result)
 % -------------------------------------------------
 % starts a game between the two players
 % <Player1> and <Player2> are the two AIs names
-% a <Player> must have the form of player(PlayerId, Player_field, Opponent_field,NPlayer, NOpponent,Position) where :
-%         <PlayerId> is the number of the player (1 or 2)
+% a <Player> must have the form of player(Player_field, Opponent_field,NPlayer, NOpponent,Position, FinalPos) where :
 %         <NPlayer> is the new field of the player after the move
 %         <NOpponent> is the new field of the opponent after the move
 %         <Position> is the starting position from which the player has moved
-% <Final_player> is the final sate of the player's field
-% <Final_opponent > is the final sate of the opponent's field
+% <Result> is the Id of the winner
 % ==============================================================================
 
 game_progress(Player1, Player2,Result):- 
@@ -28,12 +26,25 @@ game_progress_private(PlayerId, _, _, Player_field,Opponent_field, _,_,Result) :
 	game_over(PlayerId,Player_field, Opponent_field,Result), !.
 
 game_progress_private(PlayerId, Player, Opponent, Player_field,Opponent_field, Final_player,Final_opponent,Result) :- 
-	call(Player, Player_field, Opponent_field,NPlayer, NOpponent,Position), Position1 is Position,
-		(print_progress(PlayerId,NPlayer,NOpponent,Position1), temporize,get_opponent(PlayerId,OpponentId),
-		game_progress_private(OpponentId, Opponent, Player, NOpponent, NPlayer, Final_opponent, Final_player,Result)
-		).
+	call(Player, Player_field, Opponent_field,NPlayer, NOpponent,Position, FinalPos), 	
+	next_move(Position, FinalPos, PlayerId, Player, Opponent, NPlayer, NOpponent, Final_player,Final_opponent,Result).
 
-		
+next_move(Position,5,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
+	print_progress(PlayerId,Player_field,Opponent_field,Position), 
+	temporize,
+	game_progress_private(PlayerId, Player,  Opponent, Player_field, Opponent_field, Final_player, Final_opponent, Result).
+	
+next_move(Position,16,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
+	print_progress(PlayerId,Player_field,Opponent_field,Position), 
+	temporize,
+	game_progress_private(PlayerId, Player,  Opponent, Player_field, Opponent_field, Final_player, Final_opponent, Result).
+
+next_move(Position, FinalPos, PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
+	print_progress(PlayerId,Player_field,Opponent_field,Position), 
+	temporize,
+	get_opponent(PlayerId,OpponentId),
+	game_progress_private(OpponentId, Opponent, Player, Opponent_field, Player_field, Final_opponent, Final_player,Result).
+	
 % ==============================================================================
 % game_over is true when the opponent's field 
 % ==============================================================================
