@@ -1,9 +1,26 @@
-/*Stratégie gloutonne : Le coup joué est le premier qui permet de manger des graines. Les maisons sont explorées dans le sens du jeu (1er élément du tableau) */
-strategie_gloutonne( J_avant,Adv_avant, J_apres, Adv_apres, Pos,FinalPos) :- Pos is 0, strategie_gloutonne_calcul(Pos, J_avant,Adv_avant, J_apres, Adv_apres, FinalPos).
-strategie_gloutonne( J_avant,Adv_avant, J_apres, Adv_apres,Pos, FinalPos) :- random_player(J_avant,Adv_avant, J_apres, Adv_apres, Pos, FinalPos).
+% ==============================================================================
+% Greedy strategy : we play the first move found that allow us to increase our store. 
+% Possibilities are explored from the first element in the list to the last one.
+% ==============================================================================
+greedy_strategy( Player_before,Opponent_before, Player_after, Opponent_after, Pos,FinalPos) :- 
+	Pos is 0, 
+	greedy_strategy_calcul(Pos, Player_before,Opponent_before, Player_after, Opponent_after, FinalPos).
+	
+greedy_strategy( Player_before,Opponent_before, Player_after, Opponent_after,Pos, FinalPos) :- 
+	random_player(Player_before,Opponent_before, Player_after, Opponent_after, Pos, FinalPos).
 
-
-strategie_gloutonne_calcul(X, J_avant,Adv_avant, J_apres, Adv_apres, FinalPos) :- nth0(5, J_avant, Score_avant), move( X, J_avant, Adv_avant, J_apres, Adv_apres, FinalPos), nth0(5, J_apres, Score_apres), Score_apres > Score_avant.
-strategie_gloutonne_calcul(X, J_avant,Adv_avant, J_apres, Adv_apres, FinalPos) :- X1 is X+1, X1 < 5, strategie_gloutonne_calcul(X1, J_avant,Adv_avant, J_apres, Adv_apres, FinalPos). /* Appel récursif à vérifier : Paramètres J_avant et J_apres ne changent pas d'un appel à un autre ici ! )*/
+% ==============================================================================
+% greedy_strategy_calcul tries each move possible and stop when the move makes the store increase
+% ==============================================================================
+greedy_strategy_calcul(X, Player_before,Opponent_before, Player_after, Opponent_after, FinalPos) :- 
+	nth0(5, Player_before, Score_before), 
+	move( X, Player_before, Opponent_before, Player_after, Opponent_after, FinalPos), 
+	nth0(5, Player_after, Score_after), 
+	Score_after > Score_before.
+	
+greedy_strategy_calcul(X, Player_before,Opponent_before, Player_after, Opponent_after, FinalPos) :- 
+	X1 is X+1, 
+	X1 < 5, 
+	greedy_strategy_calcul(X1, Player_before,Opponent_before, Player_after, Opponent_after, FinalPos).
 
 
