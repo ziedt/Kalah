@@ -44,9 +44,12 @@ print_progress(PlayerId,Player_field, Opponent_field,Position) :-
 	NewPlayerId is PlayerId - 1,
 	SelectedHole is Position + NewPlayerId * 6,
 	write(OStream,'tab;'),
+	write(OStream,PlayerId),
+	write(OStream,';'),
 	write(OStream,SelectedHole),
 	write(OStream,';'),
 	print_base(6,Player_field, OStream),
+	write(OStream,';'),
 	print_base(6,Opponent_field, OStream),
 	nl(OStream),
 	flush_output(OStream).

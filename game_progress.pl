@@ -1,25 +1,41 @@
 :- [basic_moves].
 :- [random_player].
 :- [most_seed_player].
-:- [human_player].
+:- [prolog_player].
+:- [java_player].
 :- [end_in_store].
 :- [min_max_def].
 :- [greedy_strategy].
-:- [java_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
+% ==============================================================================
+% prolog_interface(Player1, Player2, Result)
+% -------------------------------------------------
+% starts a game between the two players
+% <Player1> and <Player2> are the two AIs names
+% a <Player> must have the form of player(Player_field, Opponent_field,NPlayer, NOpponent,Position, FinalPos) where :
+%         <NPlayer> is the new field of the player after the move
+%         <NOpponent> is the new field of the opponent after the move
+%         <Position> is the starting position from which the player has moved
+% <Result> is the Id of the winner
+% ==============================================================================
 
 prolog_interface(Player1, Player2,Result):- 
     [interface_prolog],
-	new_player_field(Player_field), new_player_field(Opponent_field),  
+	new_player_field(Player_field), new_player_field(Opponent_field),
+    print_progress(1,Player_field,Opponent_field,-1), 
 	game_progress_private(1,Player1, Player2, Player_field, Opponent_field,_,_,Result),!.
 	
 java_interface :- 
    [interface_java],
    connect(54321),
-   connectedReadStream(IStream), read(IStream,(Player1,Player2)),
+   connectedWriteStream(OStream),
+   connectedReadStream(IStream),
+   write(OStream,'start'), nl(OStream), flush_output(OStream),
+   read(IStream,(Player1,Player2)),
    %Launch Game with indicated Players (loopJavaInterface
    new_player_field(Player_field), new_player_field(Opponent_field),
+   print_progress(1,Player_field,Opponent_field,-1), 
    game_progress_private(1,Player1, Player2, Player_field, Opponent_field,_,_, _),!.
 
 

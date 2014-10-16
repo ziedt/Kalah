@@ -13,4 +13,4 @@ ask_input(PlayerId, X) :-
 	nl(OStream),
 	flush_output(OStream),
 	read(IStream,X), 
-	(X=:=0).
+    (0=<X , X=<4).
