@@ -49,7 +49,7 @@ game_progress_private(PlayerId, Player, Opponent, Player_field,Opponent_field, F
 
 % ==============================================================================
 % next_move prints the result of the move, elects the next player depending on the position of the last seed distributed
-% and makes it play
+% and asks the user to validate before it plays the next round
 % ==============================================================================
 next_move(Position,5,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
 	print_progress(PlayerId,Player_field,Opponent_field,Position), 

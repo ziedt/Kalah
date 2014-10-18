@@ -22,7 +22,7 @@ game_progress(Player1, Player2,Result):-
 % asks the user for an input 
 % ==============================================================================
 temporize :- repeat, 
-            write('Please enter 5'), 
+            write('Please enter 5'),nl, 
             read(X), 
             (X=:=5).
 
@@ -30,19 +30,19 @@ temporize :- repeat,
 % Display the end of the game
 % ==============================================================================	
 end :-
-	write('THE END').
+	write('GAME OVER!').
 			
 % ==============================================================================
 % Prints the state of the game after a move
 % ==============================================================================
 print_progress(PlayerId,Player_field, Opponent_field,Position) :- 
-	write('---player--- ('), 
+	write('==== Player '), 
 	write(PlayerId),
-	write(')'),nl,
+	write(' ===='),nl,
 	write('moves from position '), write(Position),nl,
 	print_base(6,Player_field), nl,
-	print_base(6,Opponent_field).
+	print_base(6,Opponent_field),nl,nl.
 
 print_base(0, _) :- !.
 print_base(_, []).
-print_base(N, [H|T]) :- write(H), write(' ,'), N1 is N - 1, print_base(N1, T).
+print_base(N, [H|T]) :- write(H), write('   '), N1 is N - 1, print_base(N1, T).
