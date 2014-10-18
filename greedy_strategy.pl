@@ -7,7 +7,7 @@ greedy_strategy(_, Player_before,Opponent_before, Player_after, Opponent_after, 
 	greedy_strategy_calcul(Pos, Player_before,Opponent_before, Player_after, Opponent_after, FinalPos).
 	
 greedy_strategy(_, Player_before,Opponent_before, Player_after, Opponent_after,Pos, FinalPos) :- 
-	random_player(Player_before,Opponent_before, Player_after, Opponent_after, Pos, FinalPos).
+	random_player(_, Player_before,Opponent_before, Player_after, Opponent_after, Pos, FinalPos).
 
 % ==============================================================================
 % greedy_strategy_calcul tries each move possible and stop when the move makes the store increase
