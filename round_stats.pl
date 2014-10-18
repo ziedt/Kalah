@@ -23,16 +23,16 @@ round_stats_private(PlayerId, Player, Opponent, Player_field,Opponent_field, Fin
 % ==============================================================================
 next_move_sleep(Position,5,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
 	print_progress(PlayerId,Player_field,Opponent_field,Position), 
-	sleep(0.7),
+	sleep(0.2),
 	round_stats_private(PlayerId, Player,  Opponent, Player_field, Opponent_field, Final_player, Final_opponent, Result).
 	
 next_move_sleep(Position,16,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
 	print_progress(PlayerId,Player_field,Opponent_field,Position), 
-	sleep(0.7),
+	sleep(0.2),
 	round_stats_private(PlayerId, Player,  Opponent, Player_field, Opponent_field, Final_player, Final_opponent, Result).
 
 next_move_sleep(Position, _, PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
 	print_progress(PlayerId,Player_field,Opponent_field,Position), 
-	sleep(0.7),
+	sleep(0.2),
 	get_opponent(PlayerId,OpponentId),
 	round_stats_private(OpponentId, Opponent, Player, Opponent_field, Player_field, Final_opponent, Final_player,Result).
