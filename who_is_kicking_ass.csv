@@ -1,0 +1,5 @@
+,"random_player",,,"most_seed_player",,,"greedy_strategy",,
+,"Won","Lost","Draw","Won","Lost","Draw","Won","Lost","Draw"
+"random_player",55,45,0,65,35,0,18,82,0
+"most_seed_player",71,29,0,100,0,0,100,0,0
+"greedy_strategy",83,17,0,100,0,0,100,0,0

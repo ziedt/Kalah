@@ -19,17 +19,17 @@ round_stats_private(PlayerId, Player, Opponent, Player_field,Opponent_field, Fin
 % next_move_sleep prints the result of the move, elects the next player depending on the position of the last seed distributed
 % and sleeps before it plays the next round.
 % ==============================================================================
-next_move_sleep(Position,5,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
+next_move_sleep(_,5,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
 	%print_progress(PlayerId,Player_field,Opponent_field,Position), 
 	%sleep(0.2),
 	round_stats_private(PlayerId, Player,  Opponent, Player_field, Opponent_field, Final_player, Final_opponent, Result).
 	
-next_move_sleep(Position,16,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
+next_move_sleep(_,16,PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
 	%print_progress(PlayerId,Player_field,Opponent_field,Position), 
 	%sleep(0.2),
 	round_stats_private(PlayerId, Player,  Opponent, Player_field, Opponent_field, Final_player, Final_opponent, Result).
 
-next_move_sleep(Position, _, PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
+next_move_sleep(_, _, PlayerId, Player, Opponent, Player_field, Opponent_field, Final_player,Final_opponent,Result) :-
 	%print_progress(PlayerId,Player_field,Opponent_field,Position), 
 	%sleep(0.2),
 	get_opponent(PlayerId,OpponentId),
