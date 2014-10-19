@@ -15,7 +15,7 @@ max(LVal, LPos, Max_Val, Pos) :-
 	nth0(Ind, LVal, Max_Val),
 	nth0(Ind, LPos, Pos),!. /*Returns max value and its index in list L*/
 
-minimax(J1, J2, 3, Val, _ ) :- eval(J1,J2,Val), !.
+minimax(J1, J2, 5, Val, _ ) :- eval(J1,J2,Val), !.
 minimax(J1, J2, Depth, Val, Ind) :-
 	parcours(J1, J2, Depth,0, ListeVal, ListePos),
 	Depth_parity is mod(Depth,2),
