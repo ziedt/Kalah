@@ -14,7 +14,7 @@ appel(Val,Ind) :-
 
 
 
-minimax(J1, J2, 5, Val, _ ) :- eval(J1,J2,Val), !.
+minimax(J1, J2, 5, Val, _ ) :- eval_diff(J1,J2,Val), !.
 minimax(J1, J2, Depth, Val, Ind) :-
 	parcours(J1, J2, Depth,0, ListeVal, ListePos),
 	Depth_parity is mod(Depth,2),
