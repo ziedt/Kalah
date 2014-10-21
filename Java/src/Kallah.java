@@ -275,7 +275,7 @@ public class Kallah extends JFrame implements ActionListener, MouseListener {
 			System.exit(1);
 		}
 
-		String[] possibilities = {"java_player","random_player","greedy_strategy","most_seed_player","minimax_def_player","minimax","end_in_store"};
+		String[] possibilities = {"java_player","random_player","greedy_player","most_seed_player","minimax_def_player","minimax","end_in_store_player"};
 		Object[] message = new Object[4] ; 
 		message[0] = new Label(" First Player ") ;
 		message[1] = new JComboBox(possibilities);

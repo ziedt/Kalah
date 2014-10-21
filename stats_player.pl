@@ -2,7 +2,7 @@
 :- [round_stats].
 :- [random_player].
 :- [most_seed_player].
-:- [greedy_strategy].
+:- [greedy_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 
@@ -11,7 +11,7 @@
 % ==============================================================================
 player(random_player,1).
 player(most_seed_player,2).
-player(greedy_strategy,3).
+player(greedy_player,3).
 
 % ==============================================================================
 % clears, then fills the database with <Game_number> of games between 
