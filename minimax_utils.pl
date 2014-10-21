@@ -24,13 +24,7 @@ not_potential_house(Nb_seeds) :- Nb_seeds>2.
 exclude_nonPickable(In,Out) :- exclude(not_potential_house,In,Out).
 sum_potential(J,Res)  :-  exclude_nonPickable(J,Out), sum_list(Out,Res).
 
-  
-count(_, [], 0).
-count(X, [X | T], N) :-
-  count(X, T, N1),
-  N is N1 + 1.
-count(X, [_ | T], N) :-
-  count(X, T, N).
+ 
 
 min(LVal, LPos, Min_Val, Pos) :-
 	min_member(Min_Val, LVal),
