@@ -7,6 +7,7 @@
 appel(Val,Ind) :-
    time(minimax([4,4,4,4,4,0],[4,4,4,4,4,0],0,Val,Ind)).
 
+
    minimax_player(_, Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, FinalPos):- 
 		minimax( Player_field, Opponent_field, 0, _, Best_Index),
 		move(Best_Index, Player_field, Opponent_field, NPlayer, NOpponent, FinalPos).
