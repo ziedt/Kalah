@@ -3,9 +3,9 @@
 :- [most_seed_player].
 :- [prolog_player].
 :- [java_player].
-:- [end_in_store].
+:- [end_in_store_player].
 :- [minimax_def_player].
-:- [greedy_strategy].
+:- [greedy_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 % ==============================================================================
