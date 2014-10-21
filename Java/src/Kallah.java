@@ -132,11 +132,13 @@ public class Kallah extends JFrame implements ActionListener, MouseListener {
                 mValidateBt.addActionListener(this) ; 
                 
                 mPanel = new ImagePanel();
-
+                mPanel.addMouseListener(this);
+                mPanel.setValue(""+4, ""+4, ""+4, ""+4, ""+4, ""+0, ""+4, ""+4, ""+4, ""+4, ""+4, ""+0);
                 this.setTitle("Kallah") ; 
                 
                 this.add(mPanel) ; 
-                this.setSize(800,566) ;
+                this.setSize(806,594) ;
+                this.setResizable(false);
                 this.setLocation(300,300) ;        
         }
 
@@ -220,7 +222,6 @@ public class Kallah extends JFrame implements ActionListener, MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-                JButton source = (JButton)e.getSource();
                 int num = -1;
                 if(e.getX() > 203 && e.getX() < 270){
                         num = 4;
@@ -270,7 +271,7 @@ public class Kallah extends JFrame implements ActionListener, MouseListener {
 
         	String h00, h01, h02, h03, h04, h05,
         	h10, h11, h12, h13, h14, h15;
-        	
+        	            
         	public void setValue(String h00,String h01,String h02,String h03,String h04, String h05,
         			String h10,String h11,String h12,String h13,String h14, String h15){
         		this.h00 = h00;
@@ -285,6 +286,7 @@ public class Kallah extends JFrame implements ActionListener, MouseListener {
         		this.h13 = h13;
         		this.h14 = h14;
         		this.h15 = h15;
+        		repaint();
         	}
         	
 			@Override
@@ -297,16 +299,20 @@ public class Kallah extends JFrame implements ActionListener, MouseListener {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				g.drawString(""+h00, 530, 210);
-				g.drawString(""+h01, 447, 210);
-				g.drawString(""+h02, 369, 210);
-				g.drawString(""+h03, 287, 210);
-				g.drawString(""+h04, 207, 210);
-				g.drawString(""+h10, 207, 290);
-				g.drawString(""+h11, 287, 290);
-				g.drawString(""+h12, 369, 290);
-				g.drawString(""+h13, 447, 290);
-				g.drawString(""+h14, 530, 290);
+				g.setColor(Color.WHITE);
+				g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+				g.drawString(""+h00, 550, 250);
+				g.drawString(""+h01, 467, 250);
+				g.drawString(""+h02, 389, 250);
+				g.drawString(""+h03, 307, 250);
+				g.drawString(""+h04, 227, 250);
+				g.drawString(""+h05, 127, 290);
+				g.drawString(""+h10, 227, 330);
+				g.drawString(""+h11, 307, 330);
+				g.drawString(""+h12, 389, 330);
+				g.drawString(""+h13, 467, 330);
+				g.drawString(""+h14, 550, 330);
+				g.drawString(""+h15, 650, 290);
 			}
         	
         }
