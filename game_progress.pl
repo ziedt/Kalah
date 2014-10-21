@@ -68,12 +68,13 @@ next_move(Position, _, PlayerId, Player, Opponent, Player_field, Opponent_field,
 	game_progress_private(OpponentId, Opponent, Player, Opponent_field, Player_field, Final_opponent, Final_player,Result).
 	
 % ==============================================================================
-% game_over is true when the opponent's field 
+% game_over is true when the opponent's field is empty
 % ==============================================================================
 game_over(PlayerId,Player, Opponent,Result) :-  (sub_list([0,0,0,0,0],Opponent); sub_list([0,0,0,0,0],Player)),
 		sumlist(Player, PSeeds),
 		sumlist(Opponent, OSeeds),
-		(PSeeds>OSeeds -> Result=PlayerId ; get_opponent(PlayerId, Result)),
+		(PSeeds>OSeeds -> ResultTemp=PlayerId ; get_opponent(PlayerId, ResultTemp)),
+		(PSeeds==OSeeds -> Result=0 ; Result=ResultTemp),
 		end.
 	
 
