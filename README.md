@@ -17,3 +17,11 @@ Projet-Prolog
 
 - défensive : toujours en avoir au moins 3 dans chaque case de son camp
 - défensive : évaluer les coups possibles de l'adversaire et choisir notre coup qui lui permet de ramasser le moins de graines possibles (min max avec n en argument)
+
+###Fonctionnement JAVA
+Ajouter le lien vers prolog dans le Path windows
+	Exemple : "C:\Program Files\swipl\bin"
+Lancer le fichier Jar
+Entrer dans le premier champ la commande prolog
+Entrer dans le second champ le chemin absolu vers le fichier auto_launch_java.pl
+	Exemple : "D:\Projet-Prolog\auto_launch_java.pl"

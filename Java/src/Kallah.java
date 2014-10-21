@@ -242,7 +242,7 @@ public class Kallah extends JFrame implements ActionListener {
 
 public static void main(String[] args) { 
       String prolog = "swipl" ; //Environment Variable
-      String mFile = "G:\\Smartgit_INSA\\Repositories\\Projet-Prolog\\auto_launch_java.pl";
+      String mFile = "D:\\Programmation\\git_github\\Projet-Prolog\\auto_launch_java.pl";
       String firstPlayer = "java_player";
       String secondPlayer = "java_player";
       boolean noargs = true ; 
@@ -252,16 +252,16 @@ public static void main(String[] args) {
          noargs = false ; 
       } 
       catch (Exception xx) {
-         System.out.println("usage: java Kallah  <where prolog>  <where ttt>") ; 
+         System.out.println("usage: java Kallah  <where prolog>  <where auto_launch_java.pl>") ; 
       }
       if (noargs) { 
          Object[] message = new Object[4] ; 
-         message[0] = new Label("  prolog command") ;
+         message[0] = new Label("Prolog Commande") ;
          message[1] = new JTextField(prolog) ; 
-         message[2] = new Label("  where ttt.pl ") ;
+         message[2] = new Label("auto_launch_java.pl Location") ;
          message[3] = new JTextField(mFile) ; 
          try { 
-            int I = JOptionPane.showConfirmDialog(null,message,"Where are Prolog and ttt.pl? ",JOptionPane.OK_CANCEL_OPTION) ;  
+            int I = JOptionPane.showConfirmDialog(null,message,"Where are Prolog and auto_launch_java.pl ? ",JOptionPane.OK_CANCEL_OPTION) ;  
             if (I == 2 | I == 1) System.exit(0) ;
             System.out.println(I) ;
             prolog = ((JTextField)message[1]).getText().trim();
@@ -269,6 +269,12 @@ public static void main(String[] args) {
          } catch(Exception yy) {} 
       }
 
+      File file= new File(mFile);
+      if(!file.exists()){
+    	  System.out.println("Wrong pl Location.");
+    	  System.exit(1);
+      }
+      
       String[] possibilities = {"java_player","random_player","greedy_strategy","most_seed_player","min_max_def","minimax","end_in_store"};
       Object[] message = new Object[4] ; 
       message[0] = new Label(" First Player ") ;
