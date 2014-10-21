@@ -3,6 +3,10 @@
 :-consult('basic_moves').
 :- use_module(library(lists)).
 
+appel(Val,Ind) :-
+   time(minimax([4,4,4,4,4,0],[4,4,4,4,4,0],0,Val,Ind)).
+
+
 /* eval(+J1, +J2, -Val) */
 eval(J1,_,Val) :- nth0(5, J1, Val).  /*Silly and unrealistic evaluation function. used just for tests)*/
 
@@ -30,9 +34,10 @@ parcours(J1, J2, Depth, Pos, [S|H],[Pos|LPos]) :-
 	((Depth_parity == 0) ->
 	        (move(Pos, J1, J2, J1_New, J2_New, _));
 	        (move(Pos, J2, J1, J2_New, J1_New, _))
-	),!,
+	),
 	Depth2 is Depth+1,
 	minimax(J1_New, J2_New, Depth2, S, _),
+	!, /* minimax can also fail if no move is possible!! */
 	Pos2 is Pos+1,
 	parcours(J1, J2, Depth, Pos2, H,LPos).
 parcours(J1, J2, Depth, Pos, H,LPos) :-
