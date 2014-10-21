@@ -3,6 +3,8 @@
 :- [random_player].
 :- [most_seed_player].
 :- [greedy_player].
+:- [minimax].
+:- [alphabeta_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 
@@ -12,6 +14,8 @@
 player(random_player,1).
 player(most_seed_player,2).
 player(greedy_player,3).
+player(minimax_player,4).
+player(alphabeta_player, 5).
 
 % ==============================================================================
 % clears, then fills the database with <Game_number> of games between 
@@ -72,8 +76,8 @@ play_game(P1, P2, Round_number, Won, Lost, Draw):-
 	increment_score(Result,  Nwon, Nlost, Ndraw, Won, Lost, Draw),!.
 
 increment_score(0,Won, Lost, Draw, Won, Lost, Ndraw):- Ndraw is (Draw + 1).
-increment_score(1,Won, Lost, Draw, Won, Nlost, Draw) :- Nlost is (Lost + 1).
-increment_score(2, Won, Lost, Draw, Nwon, Lost, Draw) :- Nwon is (Won + 1).
+increment_score(2,Won, Lost, Draw, Won, Nlost, Draw) :- Nlost is (Lost + 1).
+increment_score(1, Won, Lost, Draw, Nwon, Lost, Draw) :- Nwon is (Won + 1).
 
 % ==============================================================================
 % adds <Game_number> of games between <Player> and <Opponent> to the database.
@@ -83,7 +87,7 @@ add_game_db(Player,Pid, Opponent,Oid,Game_number) :- write('Now Playing: '),
 				play_game(Player, Opponent, Game_number, Won, Lost, Draw),
 				nl,write('Won games:'),write(Won),nl,
 				write('Lost games:'),write(Lost),nl,
-				write('Won games:'),write(Draw),nl,write('================='),nl,nl,
+				write('Draw games:'),write(Draw),nl,write('================='),nl,nl,
 				assert(games_db(Pid, Oid,1, Won)),
 				assert(games_db(Pid, Oid,2, Lost)),
 				assert(games_db(Pid, Oid,0, Draw)).
