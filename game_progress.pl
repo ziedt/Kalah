@@ -4,7 +4,7 @@
 :- [prolog_player].
 :- [java_player].
 :- [end_in_store].
-:- [min_max_def].
+:- [minimax_def_player].
 :- [greedy_strategy].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC

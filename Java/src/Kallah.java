@@ -275,7 +275,7 @@ public static void main(String[] args) {
     	  System.exit(1);
       }
       
-      String[] possibilities = {"java_player","random_player","greedy_strategy","most_seed_player","min_max_def","minimax","end_in_store"};
+      String[] possibilities = {"java_player","random_player","greedy_strategy","most_seed_player","minimax_def_player","minimax","end_in_store"};
       Object[] message = new Object[4] ; 
       message[0] = new Label(" First Player ") ;
       message[1] = new JComboBox(possibilities);
