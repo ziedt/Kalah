@@ -1,0 +1,6 @@
+,"random_player",,,"most_seed_player",,,"greedy_player",,,"end_in_store_player",,
+,"Won","Lost","Draw","Won","Lost","Draw","Won","Lost","Draw","Won","Lost","Draw"
+"random_player",38,62,0,31,69,0,77,23,0,65,35,0
+"most_seed_player",22,78,0,0,100,0,0,100,0,31,69,0
+"greedy_player",22,78,0,0,100,0,0,100,0,39,61,0
+"end_in_store_player",25,75,0,26,74,0,45,55,0

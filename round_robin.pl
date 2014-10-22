@@ -12,21 +12,22 @@
 % round robin tournament between the players , comment if you want to try the
 % tournament between the heuristics.
 % ==============================================================================
-player(random_player,1).
-player(most_seed_player,2).
-player(greedy_player,3).
-player(end_in_store_player,4).
+
+%player(random_player,1).
+%player(most_seed_player,2).
+%player(greedy_player,3).
+%player(end_in_store_player,4).
 
 % ==============================================================================
 % Round-robin tournament between the minimax with alpha beta pruning players, with
 % different heuristics.
 % ==============================================================================
-%player(alphabeta_simple_player,1).
-%player(minimax_diff_player,2).
-%player( alphabeta_potential_player,3).
-%player(alphabeta_nbNonEmpty_player,4).
-%player(alphabeta_totalSeeds_player,5).
-%player(alphabeta_ultimate_player,6).
+player(alphabeta_simple_player,1).
+player(minimax_diff_player,2).
+player( alphabeta_potential_player,3).
+player(alphabeta_nbNonEmpty_player,4).
+player(alphabeta_totalSeeds_player,5).
+player(alphabeta_ultimate_player,6).
 
 
 % ==============================================================================
