@@ -23,7 +23,7 @@
 % different heuristics.
 % ==============================================================================
 player(alphabeta_simple_player,1).
-player(minimax_diff_player,2).
+player(alphabeta_diff_player,2).
 player( alphabeta_potential_player,3).
 player(alphabeta_nbNonEmpty_player,4).
 player(alphabeta_totalSeeds_player,5).
