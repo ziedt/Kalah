@@ -20,11 +20,15 @@ alphabeta_potential_player(_, Player_field, Opponent_field,NPlayer, NOpponent,Be
 		move(Best_Index, Player_field, Opponent_field, NPlayer, NOpponent, FinalPos).
 
 alphabeta_nbNonEmpty_player(_, Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, FinalPos):- 
-		minimax_ab( Player_field, Opponent_field, 0, _, Best_Index, -1000, 1000,evalNbNonEmpty),
+		minimax_ab( Player_field, Opponent_field, 0, _, Best_Index, -1000, 1000,eval_nbNonEmpty),
 		move(Best_Index, Player_field, Opponent_field, NPlayer, NOpponent, FinalPos).
 
 alphabeta_totalSeeds_player(_, Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, FinalPos):- 
 		minimax_ab( Player_field, Opponent_field, 0, _, Best_Index, -1000, 1000,eval_totalSeeds),
+		move(Best_Index, Player_field, Opponent_field, NPlayer, NOpponent, FinalPos).
+
+alphabeta_ultimate_player(_, Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, FinalPos):- 
+		minimax_ab( Player_field, Opponent_field, 0, _, Best_Index, -1000, 1000,eval_ultimate),
 		move(Best_Index, Player_field, Opponent_field, NPlayer, NOpponent, FinalPos).
 
 /*

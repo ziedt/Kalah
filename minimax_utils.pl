@@ -17,6 +17,14 @@ eval_nbNonEmpty(J1,_,Val) :- number_of_unpickable(J1, Val). /*Heuristic : I try 
 
 eval_totalSeeds(J1,_,Val) :- replace(J1,5,0,Res), sum_list(Res,Val). /*Heuristic : Close to nbNonEmpty : computes number of seeds in my play ground = keep as many seeds on the players own side*/
 
+% After testing, we affect weights to the evaluation functions depending on their result in a round-robin tournament.
+eval_ultimate(J1,J2,Val) :- eval_simple(J1,_, Vals), eval_diff(J1,J2,Vald), 
+							eval_potential(J1,J2,Valp), 
+							eval_nbNonEmpty(J1,_,Valem), 
+							eval_totalSeeds(J1,_,Valt), Val is Vald +  (Valt + Valp) * 0.5 + (Vals + Valem)* 0.25 .							
+
+
+
 pickable_house(Nb_seeds) :- Nb_seeds < 3.
 exclude_pickable(In,Out) :- exclude(pickable_house,In,Out).
 number_of_unpickable(L,R) :- exclude_pickable(L,Out), length(Out,R).

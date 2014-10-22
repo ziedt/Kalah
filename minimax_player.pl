@@ -21,7 +21,7 @@ appel(Val,Ind) :-
 		move(Best_Index, Player_field, Opponent_field, NPlayer, NOpponent, FinalPos).
 
 	minimax_nbNonEmpty_player(_, Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, FinalPos):- 
-		minimax( Player_field, Opponent_field, 0, _, Best_Index,evalNbNonEmpty),
+		minimax( Player_field, Opponent_field, 0, _, Best_Index,eval_nbNonEmpty),
 		move(Best_Index, Player_field, Opponent_field, NPlayer, NOpponent, FinalPos).
 
 	minimax_totalSeeds_player(_, Player_field, Opponent_field,NPlayer, NOpponent,Best_Index, FinalPos):- 

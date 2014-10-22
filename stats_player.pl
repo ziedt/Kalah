@@ -9,14 +9,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
 
 % ==============================================================================
-% the players that are going to face each other
+% round robin tournament between the players , comment if you want to try the
+% tournament between the heuristics.
 % ==============================================================================
 player(random_player,1).
 player(most_seed_player,2).
 player(greedy_player,3).
-player(minimax_player,4).
-player(alphabeta_player, 5).
-player(end_in_store_player,6).
+player(end_in_store_player,4).
+
+% ==============================================================================
+% Round-robin tournament between the minimax with alpha beta pruning players, with
+% different heuristics.
+% ==============================================================================
+%player(alphabeta_simple_player,1).
+%player(minimax_diff_player,2).
+%player( alphabeta_potential_player,3).
+%player(alphabeta_nbNonEmpty_player,4).
+%player(alphabeta_totalSeeds_player,5).
+%player(alphabeta_ultimate_player,6).
+
 
 % ==============================================================================
 % clears, then fills the database with <Game_number> of games between 
@@ -26,7 +37,8 @@ populate_db(Game_number):-
 	retractall(games_db(_,_,_,_)),
 	play_all(Game_number).
 % ==============================================================================
-% exports the results in the database in csv format.
+% exports the results in the database in csv format. sould be called after a 
+% populate_db to fill the database with the results of the 
 % ==============================================================================
 export_to_csv(File):- 
 	open(File, write, Stream),

@@ -1,0 +1,7 @@
+,"alphabeta_simple_player",,,"minimax_diff_player",,,"alphabeta_potential_player",,,"alphabeta_nbNonEmpty_player",,,"alphabeta_totalSeeds_player",,
+,"Won","Lost","Draw","Won","Lost","Draw","Won","Lost","Draw","Won","Lost","Draw","Won","Lost","Draw"
+"alphabeta_simple_player",0,1,0,0,1,0,0,1,0,1,0,0,0,1,0
+"minimax_diff_player",1,0,0,1,0,0,1,0,0,1,0,0,1,0,0
+"alphabeta_potential_player",1,0,0,0,1,0,1,0,0,1,0,0,1,0,0
+"alphabeta_nbNonEmpty_player",1,0,0,0,1,0,0,1,0,0,1,0,0,1,0
+"alphabeta_totalSeeds_player",1,0,0,0,1,0,1,0,0,1,0,0,1,0,0
