@@ -3,7 +3,7 @@
 :- [random_player].
 :- [most_seed_player].
 :- [greedy_player].
-:- [minimax].
+:- [minimax_player].
 :- [alphabeta_player].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PUBLIC
@@ -16,6 +16,7 @@ player(most_seed_player,2).
 player(greedy_player,3).
 player(minimax_player,4).
 player(alphabeta_player, 5).
+player(end_in_store_player,6).
 
 % ==============================================================================
 % clears, then fills the database with <Game_number> of games between 

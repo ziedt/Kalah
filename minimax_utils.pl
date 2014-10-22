@@ -1,5 +1,6 @@
 :- use_module(library(lists)).
 :- use_module(library(apply)).
+:- consult(basic_moves).
 
 
 
@@ -12,12 +13,13 @@ eval_potential(J1,J2,Val) :- nth0(5, J1, Val1),sum_potential(J2, Pot1), nth0(5, 
  /*Adds up player's potential points and substracts opponents potential*/
  
  
-eval_nbNonEmpty(J1,_,Val) :- number_of_unpickable(J1, Val), . /*Heuristic : I try to maximize Number of my houses non emptiable in order to let the opponent end and collect all remaining seeds, must return the number of houses with 0, or more than 3 seeds */
+eval_nbNonEmpty(J1,_,Val) :- number_of_unpickable(J1, Val). /*Heuristic : I try to maximize Number of my houses non emptiable in order to let the opponent end and collect all remaining seeds, must return the number of houses with 0, or more than 3 seeds */
 
+eval_totalSeeds(J1,_,Val) :- replace(J1,5,0,Res), sum_list(Res,Val). /*Heuristic : Close to nbNonEmpty : computes number of seeds in my play ground = keep as many seeds on the players own side*/
 
-pickable_house(Nb_seeds) :- Nb_seeds<3.
+pickable_house(Nb_seeds) :- Nb_seeds < 3.
 exclude_pickable(In,Out) :- exclude(pickable_house,In,Out).
-number_of_unpickable(L,R) :- exclude_pickable(L,Out), Length(Out, R).
+number_of_unpickable(L,R) :- exclude_pickable(L,Out), length(Out,R).
 
 /*Counts the potential seeds to pick in field R i.e. the sum of the seeds in houses with less than 3 seeds*/
 not_potential_house(Nb_seeds) :- Nb_seeds>2.
@@ -34,5 +36,4 @@ max(LVal, LPos, Max_Val, Pos) :-
 	max_member(Max_Val, LVal),
 	nth0(Ind, LVal, Max_Val),
 	nth0(Ind, LPos, Pos),!. /*Returns max value and its index in list L*/
-	
 	
