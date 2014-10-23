@@ -129,7 +129,7 @@ public class Kallah extends JFrame implements MouseListener {
 		this.add(mPanel) ; 
 		this.setSize(806,594) ;
 		this.setResizable(false);
-		this.setLocation(300,300) ;        
+		this.setLocation(50,50) ;        
 	}
 
 	public static void main(String[] args) { 
@@ -168,6 +168,7 @@ public class Kallah extends JFrame implements MouseListener {
 		}
 
 		String[] possibilities = {"java_player","random_player","greedy_strategy","most_seed_player","end_in_store","minimax_def_player","minimax_simple_player","minimax_diff_player","minimax_potential_player","minimax_nbNonEmpty_player","minimax_totalSeeds_player"};
+
 		Object[] message = new Object[4] ; 
 		message[0] = new Label(" First Player ") ;
 		message[1] = new JComboBox(possibilities);
@@ -279,7 +280,8 @@ public class Kallah extends JFrame implements MouseListener {
 			super.paintComponent(g);
 			try {
 				BufferedImage img;
-				img = ImageIO.read(new File("fond.png"));
+//				img = ImageIO.read(new File("img/fond.png"));
+				img = ImageIO.read(getClass() .getResource( "/fond.png" ));
 				g.drawImage(img, 0, 0, 800, 566, null);
 			} catch (IOException e) {
 				e.printStackTrace();
