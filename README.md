@@ -1,6 +1,20 @@
-Projet-Prolog
-=============
+Kalah
+======
 
+In this project, we have implemented many AIs to solve the [Kalah](http://en.wikipedia.org/wiki/Kalah "Kalah in Wikipedia")  game in Prolog. To play against them, we have also made a Java interface. Some are easy to beat, and others are flawless players, so have fun trying to win !
+[picture]:https://github.com/ziedt/Projet-Prolog/blob/master/Java/img/fond.png
+![game board][picture]
+
+## Install
+```
+- Download the latest version of SWI-Prolog
+- If you're on Windows, you need to add it to add it to your path.
+	Example : "C:\Program Files\swipl\bin"
+- run the JAR (in the release). Enter in the second input the absolute path to the file auto_launch_java.pl
+	Example : "D:\Projet-Prolog\auto_launch_java.pl"
+- Choose your opponent and start playing !
+```
+## Rules
 - Le jeu contient 5 cases dans chaque camp + 1 store avant chaque camp adverse
 - Au début, chaque case contient 4 graines (sauf les stores) (40 graines en tout dans le jeu)
 - Chacun son tour les joueurs choisissent une case (pas un store !) et distribuent toutes les graines qui sont dedans en en mettant une dans chaque case. On met les graines dans les deux camps et aussi dans son store mais pas dans le store adverse
@@ -22,13 +36,3 @@ Projet-Prolog
 ###Heuristiques
 
 http://eldar.mathstat.uoguelph.ca/dashlock/CIG2013/papers/paper_45.pdf
-
-
-###Fonctionnement JAVA
-Ajouter le lien vers prolog dans le Path windows
-	Exemple : "C:\Program Files\swipl\bin"
-Lancer le fichier Jar
-Entrer dans le premier champ la commande prolog
-Entrer dans le second champ le chemin absolu vers le fichier auto_launch_java.pl
-	Exemple : "D:\Projet-Prolog\auto_launch_java.pl"
-
