@@ -2,9 +2,7 @@ Kalah
 ======
 
 In this project, we have implemented many AIs to solve the [Kalah](http://en.wikipedia.org/wiki/Kalah "Kalah in Wikipedia")  game in Prolog. To play against them, we have also made a Java interface. Some are easy to beat, and others are flawless players, so have fun trying to win !
-[picture]:https://github.com/ziedt/Projet-Prolog/blob/master/Java/img/fond.png
-![game board][picture]
-
+![game board](https://github.com/ziedt/Projet-Prolog/blob/master/Java/img/fond.png)
 ## Install
 ```
 - Download the latest version of SWI-Prolog
