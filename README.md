@@ -23,7 +23,7 @@ In this project, we have implemented many AIs to solve the [Kalah](http://en.wik
 * If the last sown seed lands in the player's store, the player gets an additional move. There is no limit on the number of moves a player can make in their turn.
 * When one player no longer has any seeds in any of their houses, the game ends. The other player moves all remaining seeds to their store, and the player with the most seeds in their store wins.
 
-### Strategies
+## Strategies
 - Heuristics with a look-ahead of one:
 
 	* End in store player: Landing in the player's store
