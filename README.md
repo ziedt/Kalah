@@ -3,7 +3,7 @@ Kalah
 
 In this project, we have implemented many AIs to solve the [Kalah](http://en.wikipedia.org/wiki/Kalah "Kalah in Wikipedia")  game in Prolog. To play against them, we have also made a Java interface. Some are easy to beat, and others are flawless players, so have fun trying to win !
 
-![game board](https://github.com/ziedt/Projet-Prolog/blob/master/Java/img/fond.png)
+![game board](../master/Java/img/fond.png)
 
 ## Install
 ```
@@ -30,7 +30,7 @@ In this project, we have implemented many AIs to solve the [Kalah](http://en.wik
 	* Greedy player: chooses the first house that leads to a capture
 	* Most seeds player: chooses the house that leads to the best capture in term of seeds.
 
-- Mini-max search method used with Alpha-Beta pruning, with a look ahead of 7. We have implemented many evaluation functions, and an heuristic that combines many of them. 
+- Mini-max search method used with Alpha-Beta pruning, with a look-ahead of 7. We have implemented many evaluation functions, and an heuristic that combines many of them. 
 
-A round-robin tournament was used to judge the strength of the heuristics.
+A round-robin tournament was used to judge the strength of the heuristics. The results are available in [compare-strategies.csv](../master/compare-strategies.csv) & [compare_alphabeta_heuristics](../master/compare_alphabeta_heuristics.csv). 
 
